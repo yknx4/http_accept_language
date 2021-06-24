@@ -3,11 +3,11 @@ $:.push File.expand_path("../lib", __FILE__)
 require "http_accept_language/version"
 
 Gem::Specification.new do |s|
-  s.name        = "http_accept_language"
+  s.name        = "http_accept_language_v2"
   s.version     = HttpAcceptLanguage::VERSION
-  s.authors     = ["iain"]
-  s.email       = ["iain@iain.nl"]
-  s.homepage    = "https://github.com/iain/http_accept_language"
+  s.authors     = ["iain", "yknx4"]
+  s.email       = ["iain@iain.nl", "me@ale.world"]
+  s.homepage    = "https://github.com/yknx4/http_accept_language"
   s.summary     = %q{Find out which locale the user preferes by reading the languages they specified in their browser}
   s.description = %q{Find out which locale the user preferes by reading the languages they specified in their browser}
   s.license     = "MIT"
