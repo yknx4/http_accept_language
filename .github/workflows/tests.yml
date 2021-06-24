@@ -1,0 +1,25 @@
+on:
+  push
+    
+jobs:
+  rspec:
+    name: Rspec Ruby ${{ matrix.ruby }} Rails ${{ matrix.rails }}
+    strategy:
+      fail-fast: false
+      matrix:
+        rails: [5.2, 6.0, 6.1]
+        ruby: [2.6, 2.7, 3.0]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: Specs
+        env:
+          RAILS_VERSION: ${{ matrix.rails }}
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          gem install rails --version "=$RAILS_VERSION"
+          bundle exec rspec spec
