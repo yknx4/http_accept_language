@@ -16,7 +16,10 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
       - name: Specs
+        env:
+          RAILS_VERSION: ${{ matrix.rails }}
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
+          gem install rails --version "=$RAILS_VERSION"
           bundle exec rspec spec
